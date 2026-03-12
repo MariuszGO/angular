@@ -1,0 +1,81 @@
+<form class="form-group" [formGroup]="osobaForm" (ngSubmit)="onSubmit()">
+          
+  <label class="text-danger-emphasis" for="imie">Imię:</label>
+    <input class="form-control-sm"  id="imie" type="text" formControlName="imie"><br>
+        
+    @if ( osobaForm.controls['imie'].invalid && (f['imie'].dirty || f['imie'].touched)) {
+      <div class="blad">
+       @if (osobaForm.controls['imie'].errors?.['required']) { <span>Imię jest wymagane.</span> }
+       @if (f['imie'].errors?.['minlength']) { <span>Imię musi mieć co najmniej 2 znaki.</span> }
+       @if (f['imie'].errors?.['maxlength']) { <span>Imię musi mieć do 15 znaków.</span> }
+       @if (f['imie'].errors?.['pattern']) { <span>Imię może zawierać tylko litery.</span> }
+      
+      </div>
+    }
+ <label  class="label label-default" for="nazwisko">Nazwisko:</label>
+        <input class="form-control-sm" id="nazwisko" type="text" formControlName="nazwisko"><br>
+        
+    @if (f['nazwisko'].invalid && (f['nazwisko'].dirty || f['nazwisko'].touched)) {
+      <div class="blad">
+       @if (f['nazwisko'].errors?.['required']) { <span>Nazwisko jest wymagane.</span> }
+       @if (f['nazwisko'].errors?.['minlength']) { <span>Nazwisko musi mieć co najmniej 2 znaki.</span> }
+       @if (f['nazwisko'].errors?.['pattern']) { <span>Nazwisko może zawierać tylko litery.</span> }
+      </div>
+    }
+
+  
+  <label for="wiek">Wiek:</label>
+    <input class="form-control-sm" id="wiek" type="number" formControlName="wiek"><br>
+     
+      @if (f['wiek'].invalid && (f['wiek'].dirty || f['wiek'].touched)) {
+       <div class="blad">
+        @if (f['wiek'].errors?.['required']) { <span>Wiek jest wymagany.</span> }
+        @if (f['wiek'].errors?.['min']) { <span>Musisz mieć co najmniej 18 lat.</span> }
+        @if (f['wiek'].errors?.['max']) { <span>Maksymalny wiek to 120 lat.</span> }
+      </div>  }
+        
+   <label for="email">Email:</label>
+    <input class="form-control-sm" id="email" type="email" formControlName="email"><br>
+     
+    @if (f['email'].invalid && (f['email'].dirty || f['email'].touched)) {
+     <div class="blad">
+      @if (f['email'].errors?.['required']) { <span>Email jest wymagany.</span> }
+      @if (f['email'].errors?.['email']) { <span>Niepoprawny format adresu email.</span> }
+     </div>
+      }
+     
+    <label for="kodPocztowy">Kod Pocztowy:</label>
+      <input class="form-control-sm" id="kodPocztowy" type="text" formControlName="kodPocztowy" placeholder="np. 00-001" maxlength="6">
+     
+       @if (f['kodPocztowy'].invalid && (f['kodPocztowy'].dirty || f['kodPocztowy'].touched)) {
+      <div class="blad">
+        @if (f['kodPocztowy'].errors?.['required']) { <span>Kod pocztowy jest wymagany.</span> }
+        @if (f['kodPocztowy'].errors?.['pattern']) { <span>Wymagany format XX-XXX</span> }
+      </div>
+      }
+
+      <!-- <label>PESEL:</label>
+  <input type="text" formControlName="pesel" />
+  <div *ngIf="f['pesel'].touched && f['pesel'].invalid" class="error">
+    <span *ngIf="f['pesel'].errors?.['required']">PESEL jest wymagany.</span>
+    <span *ngIf="f['pesel'].errors?.['invalidPeselFormat']">PESEL musi zawierać dokładnie 11 cyfr.</span>
+    <span *ngIf="f['pesel'].errors?.['invalidPeselChecksum']">Niepoprawna cyfra kontrolna PESEL.</span> -->
+
+<br>
+       <label for="pesel">PESEL:</label>
+      <input class="form-control-sm" id="pesel" type="text" formControlName="pesel" maxlength="11">
+     
+       @if (f['pesel'].invalid && (f['pesel'].dirty || f['pesel'].touched)) {
+   <div class="blad">
+        @if (f['pesel'].errors?.['required']) { <span>PESEL jest wymagany..</span> }
+        @if (f['pesel'].errors?.['invalidPeselFormat']) { <span>PESEL musi zawierać dokładnie 11 cyfr.</span> }
+        @if (f['pesel'].errors?.['invalidPeselChecksum']) { <span>Niepoprawna cyfra kontrolna PESEL.</span> }
+        @if (f['pesel'].errors?.['invalidPeselAge']) { <span>Wiek nie zgadza się z datą urodzenia z PESEL.</span> }
+      </div>
+
+       }
+<br><br>
+    <button class="btn btn-primary" type="submit" [disabled]="osobaForm.invalid">
+      Wyślij (Formularz: {{ osobaForm.valid ? 'Poprawny' : 'Niepoprawny' }})
+    </button>
+</form>

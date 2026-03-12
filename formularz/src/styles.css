@@ -1,0 +1,54 @@
+.container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 24px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  background-color: #ccc;
+  padding: 8px;
+  font-size: 16px;
+}
+
+input:hover{
+    background-color: antiquewhite;
+}
+input:active{
+    background-color: aquamarine;
+}
+
+button {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 33%;
+}
+
+.wynik {
+  margin-top: 24px;
+  padding: 16px;
+  background: #f3f3f3;
+  border-radius: 8px;
+  font-size: 18px;
+}

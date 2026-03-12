@@ -1,0 +1,24 @@
+# Angular dependencies
+**/node_modules/
+
+# Angular build
+**/dist/
+**/out-tsc/
+**/.angular/
+
+# test coverage
+**/coverage/
+
+# logs
+**/*.log
+
+# IDE
+.vscode/
+.idea/
+
+# system
+.DS_Store
+Thumbs.db
+
+# npm cache
+npm-debug.log*

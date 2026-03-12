@@ -1,0 +1,49 @@
+<header>
+    <h1>Angular App</h1>
+</header>
+<main>
+    <aside>
+        <form>
+            <label for="Twoje_imie">Podaj imie: </label>
+            <input type="text" [(ngModel)]="imie" name="Twoje_imie" id="Twoje_imie" /><br>
+            <label for="Twoje_nazwisko">Podaj nazwisko: </label>
+            <input type="text" [(ngModel)]="nazwisko" name="Twoje_nazwisko" id="Twoje_nazwisko"/><br>
+            <label for="Twoj_wiek">Podaj wiek: </label>
+            <select [(ngModel)]="wiek" name="Twoj_wiek" id="Twoj_wiek">
+                @for (i of liczby; track i) {
+                    <option [value]="i">{{ i }}</option>
+                }
+            </select>
+        <button (click)="funkcja('Adam')">Kliknij</button>
+        </form>
+    </aside>
+    <section>
+        <p>Twoje imię: {{imie}}</p>
+        <p>Twoje nazwisko: {{nazwisko}}</p>
+        <h3
+        [ngStyle]="{
+            color:
+            wiek <= 18 ? 'green' :
+            wiek <= 40 ? 'orange' :
+            wiek > 40 ? 'red' : 'red'
+        }"
+        >
+        Twój wiek: {{ wiek }}
+        </h3>
+
+        <h3>
+            @if (wiek !== null) {
+        @if (wiek < 18) {
+            <p>Jesteś nastolatkiem</p>
+        } @else if (wiek <= 39 && wiek >= 18) {
+            <p>Jesteś młody</p>
+        } @else {
+            <p>Jesteś stary</p>
+        }
+        }
+        </h3>
+    </section>
+</main>
+<footer>
+    <p> V AT 2025</p>
+</footer>

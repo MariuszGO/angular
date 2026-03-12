@@ -1,0 +1,19 @@
+1) Instalacja bootstap
+
+npm install bootstrap
+
+2) do angular.json
+
+"styles": [
+  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "src/styles.css"
+],
+"scripts": [
+  "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+]
+
+
+3) dodać do pliku style.css
+
+
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";

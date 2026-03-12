@@ -1,0 +1,35 @@
+
+aside, section{
+  width: 25%;
+  float: left;
+} 
+main{
+  float: left;
+  width: 50%;
+}
+    
+    input:focus {
+      border-color: #9c9c9c;
+      outline: none;
+    }
+    /* Style for invalid controls */
+    input.ng-invalid.ng-touched {
+      border-color: #dc3545;
+    }
+    .blad {
+      color: #dc3545;
+      margin-top: 5px;
+      font-size: 0.8rem;
+    }
+    button {
+    background-color:gray;
+    
+    }
+    button:hover:not(:disabled) {
+      background-color: #656665;
+    }
+    button:disabled {
+      background-color: #eaeaea;
+      cursor: not-allowed;
+    }
+  

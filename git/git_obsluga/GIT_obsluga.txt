@@ -1,0 +1,66 @@
+//Program git  można pobrać z https://git-scm.com/install/windows
+//Podstawy GIT z konsoli
+
+git --version  //Sprawdzanie wersji
+
+
+1) git config --global user.name "Twoje Imię" 
+2) git config --global user.email "twoj@email.com"
+
+ 
+git config --list //lista konfiguracji
+
+
+3) git init //tworzenie nowego repozytorium
+
+
+git clone https://github.com/uzytkownik/nazwa-repo.git  //klonowanie z istniejącego repozytorium
+
+git status //sprawdzanie czy mamy coś zatwierdzone
+
+git add plik.txt //dodanie jednego pliku do commita
+
+4) git add . //dodanie wyszstkich plików do zatwierdzenie
+
+5) git commit -m "Opis zmian" //zapis zmian
+
+6) git log
+
+7) git revert id_do_którego_się_cofamy  (id można odczytać przez git log)
+lub
+8) git reset --hard e101a3334c2cc1cc1a1ae5027b366c8d764661bb
+
+
+git remote -v //sprawdzanie zdalnego repo
+
+git remote add nazwa_repozyttorium https://github.com/nazwa_użytkownika/nazwa_repozytorium.git
+ 
+git push //wysyłanie zmian
+git push -u origin main //czasem trzeba tak
+git pull //pobieranie zmian
+git pull origin main --rebase
+
+git ls-remote --heads origin
+
+INSTALACJA dodatku do terminala gitchub 
+winget install --id GitHub.cli
+gh --version
+gh auth login
+
+gh repo create bash --public --source=. --remote=origin --push
+//Tworzy repo na GitHubie i wrzua do niego to, co mam teraz w tym folderze
+
+lub
+
+
+gh repo create moj-projekt --private
+gh repo create --source=. --public
+gh repo create --clonecd 
+
+
+//Wszystkie operacje można wykonać w programie Visual Studio Code. 
+
+
+
+
+
