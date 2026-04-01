@@ -1,7 +1,7 @@
 //Program git  można pobrać z https://git-scm.com/install/windows
 //Podstawy GIT z konsoli
 
-git --version  //Sprawdzanie wersji
+git --version  //Sprawdzanie wersji programu
 
 
 1) git config --global user.name "Twoje Imię" 
