@@ -42,7 +42,7 @@ git pull origin main --rebase
 
 git ls-remote --heads origin
 
-INSTALACJA dodatku do terminala gitchub 
+INSTALACJA dodatku do terminala github 
 winget install --id GitHub.cli
 gh --version
 gh auth login
@@ -58,7 +58,7 @@ gh repo create --source=. --public
 gh repo create --clonecd 
 
 
-//Wszystkie operacje można wykonać w programie Visual Studio Code. 
+//Wszystkie operacje można wykonać w programie Visual Studio Code poprzez GUI. 
 
 
 
