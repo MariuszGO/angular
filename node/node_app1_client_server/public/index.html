@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Aplikacja</title>
+</head>
+<body>
+
+  <h2>Aktualna liczba:</h2>
+  <div id="number">brak</div>
+
+  <h3>Wpisz liczbę:</h3>
+  <input type="text" id="input">
+
+  <script>
+    // element do wyświetlania liczby
+    const numberDiv = document.getElementById("number");
+
+    // pole input
+    const input = document.getElementById("input");
+
+    /**
+     * SSE - odbieramy dane z serwera
+     */
+    const source = new EventSource("/events");
+
+    source.onmessage = (event) => {
+      // każda zmiana z serwera trafia tutaj
+      numberDiv.textContent = event.data;
+    };
+
+    /**
+     * wysyłanie liczby przy każdej zmianie inputa
+     */
+    input.addEventListener("input", () => {
+      fetch("/number", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          number: input.value
+        })
+      });
+    });
+  </script>
+
+</body>
+</html>

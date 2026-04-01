@@ -1,0 +1,16 @@
+{
+  "name": "liczby-live",
+  "version": "1.0.0",
+  "description": "Aplikacja klient-serwer w Node.js i Express",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
