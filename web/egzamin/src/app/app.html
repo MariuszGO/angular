@@ -1,0 +1,29 @@
+<H1>Menedżer haseł wykonał: Mariusz</H1>
+<form>
+    <div class="form-group m-4">
+        <label for="adres">Adress WWW: </label>
+        <input type="text" class="form-control" placeholder="Adres strony WWW" id="adres" name="adres" [(ngModel)]="adres">
+    </div>
+    <div class="form-group m-4">
+        <label for="login">Login: </label>
+        <input type="text" class="form-control" placeholder="Twój login" id="login" name="login" [(ngModel)]="login">
+    </div>
+    <div class="form-group m-4">
+        <input type="checkbox" checked id="wygeneruj" name="wygeneruj" [(ngModel)]="wygeneruj">
+        <label for="wygeneruj">Wygeneruj hasło: </label>
+    </div>
+    <div class="form-group m-4">
+<label for="haslo">Hasło: </label>
+<input type="password" [disabled]="wygeneruj" class="form-control" id="haslo" name="haslo" [(ngModel)]="haslo">
+</div>
+
+
+<button type="submit"  class="btn btn-primary" (click)="zapisz()">Zapisz</button>
+</form>
+
+
+<p class="text-primary">Adres: {{adres_widok}}</p>
+<p>Login: {{login_widok}}</p>
+<p>Hasło: {{haslo_widok}}</p>
+
+
