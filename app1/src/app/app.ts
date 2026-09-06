@@ -17,6 +17,12 @@ export class App {
   zmienna2a = "Paweł";
 
   logiczna: boolean = true;
+  tablica: number[] = [12,23,243];
+
+  uczniowie: {imie: string, nazwisko: string} [] = [{imie: "Jan", nazwisko: "Kowal"} ,
+    {imie: "Paweł", nazwisko: "Kaczor"},
+    {imie: "Adam", nazwisko:"Nowak"}
+  ] 
 
 
 
