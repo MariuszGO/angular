@@ -17,7 +17,7 @@ export class App {
 
   adres_widok: string = '';
   login_widok: string = '';
-  haslo_widok: string = 'automatycznie generowane';
+  haslo_widok: string = '';
 
 
 
@@ -32,6 +32,16 @@ export class App {
                             else{
                                   this.haslo_widok = this.haslo;
                                 }
+  }
+
+  wyczysc(){
+    this.adres = '';
+    this.login = '';
+    this.haslo = '';
+    this.wygeneruj = true;
+    this.adres_widok = '';
+    this.login_widok = '';
+    this.haslo_widok = '';
   }
 
 }
