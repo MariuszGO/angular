@@ -16,6 +16,11 @@ export class App {
   zmienna2 = "Adam";
   zmienna3 = true;
   //zmienna3: boolean = true;
+  /*
+    1 linijka 
+    2 linijka
+    3 linijka
+  */
 
   moja_funkcja(){
     let nowa_zienna= 230;
