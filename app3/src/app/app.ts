@@ -19,7 +19,8 @@ export class App {
   imie: string = "";
   nazwisko: string = "";
   wiek: number= 0;
-  
+  imie1: string = "";
+
 
   imiona: string[] = ["Adam", "Paweł", "Jan", "Krzysztof" , "Marcin" ];
   //zmienna3: boolean = true;
@@ -41,6 +42,8 @@ export class App {
 
   wysylanie(){
   this.tekst="Wysłano formularz";
+  this.imiona.push(this.imie1);
+  this.imie1=""; 
 
   }
 
