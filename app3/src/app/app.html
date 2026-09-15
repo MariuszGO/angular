@@ -32,3 +32,17 @@
 }
 
 
+<form>
+    <label for="imie">Podaj imie:</label>
+    <input type="text" id="imie" name="im" [(ngModel)]="imie"><br>
+    <label for="naz">Podaj nazwisko:</label>
+    <input type="text" id="naz" name="nazwisko" [(ngModel)]="nazwisko"><br>
+    <label for="w">Podaj wiek:</label>
+    <input type="text" id="w" name="wi" [(ngModel)]="wiek"><br>
+</form>
+<br>
+    @if(imie != "" && nazwisko != "" && wiek != 0){
+                    <H1>Nazywamy się: {{imie}} {{nazwisko}} i mam {{wiek}} lat</H1>
+                    }
+
+<br>

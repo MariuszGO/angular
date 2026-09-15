@@ -16,6 +16,10 @@ export class App {
   zmienna2 = "Adam";
   zmienna3 = true;
   tekst="";
+  imie: string = "";
+  nazwisko: string = "";
+  wiek: number= 0;
+  
 
   imiona: string[] = ["Adam", "Paweł", "Jan", "Krzysztof" , "Marcin" ];
   //zmienna3: boolean = true;
