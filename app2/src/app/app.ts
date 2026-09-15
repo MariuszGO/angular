@@ -17,9 +17,22 @@ export class App {
   zmienna_logiczna: boolean = true;
   uczniowie: string[] = ["Adam","Jan","Krzysztof","Paweł"];
 
+  samochod : {marka:string, model:string, pojemnosc: number } ={ marka:"", model:"",pojemnosc:0};
+
+
+  samochody: {marka:string, model:string, pojemnosc: number }[] =
+  [{marka: "Audi", model: "A4", pojemnosc: 1.9 },
+    {marka: "Opel", model: "Vectra", pojemnosc: 2.0}];
 
 
 
+    dodaj_do_samochodow(){
+      this.samochody.push(this.samochod);
+
+      this.samochod= {
+        marka:"", model:"",pojemnosc:0
+      }
+    }
 
 
 

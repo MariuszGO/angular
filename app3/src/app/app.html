@@ -5,3 +5,13 @@
 <p class="text-info bg-success">Wartość zmienej logicznej: {{zmienna3}}</p>
 
 <button class="btn btn-success" (click)="moja_funkcja()">Przycisk</button>
+
+
+
+<form (ngSubmit)="wysylanie()">
+    <label for="imie">Imie:</label>
+    <input type="text" id="imie" name="imie">
+    <button>wyślij</button>
+</form>
+
+<p>{{tekst}}</p>

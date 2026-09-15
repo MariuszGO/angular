@@ -1,0 +1,86 @@
+<H1> MÓJ BUDŻET</H1>
+
+<form (ngSubmit)="dodajWydatek()">
+<label for="nazwa">Nazwa wydatku:</label>
+<input type="text" name="nazwa" id="nazwa" [(ngModel)]="wydatek.nazwa"><br>
+
+<label for="kategoria">Kategoria:</label>
+<select id="kategoria" name="kategoria" [(ngModel)]="wydatek.kategoria">
+  <option value="Żywność">Żywność</option>
+  <option value="Transport">Transport</option>
+  <option value="Rachunki">Rachunki</option>
+  <option value="Rozrywka">Rozrywka</option>
+  <option value="Inne">Inne</option>
+</select><br>
+
+<label for="Kwota">Kwota wydatku:</label>
+<input type="number" name="kwota" id="kwota" [(ngModel)]="wydatek.kwota"><br>
+
+<label for="data">Kwota wydatku:</label>
+<input type="date" name="data" id="data" [(ngModel)]="wydatek.data"><br>
+
+<label><input type="checkbox" name="oplacony" id="oplacony" [(ngModel)]="wydatek.oplacony">  Opłacony</label><br> 
+
+
+
+<label for="szukaj">Szukaj wydatku:</label>
+<input type="text" id="szukaj" name="szukaj" [(ngModel)]="szukaj"><br>
+
+
+
+<input type="submit" value="Dodaj Wydatek"><br>
+</form>
+
+<button type="button" (click)="pokaz_wszystkie()">Wszystkie</button>
+<button type="button" (click)="pokaz_oplacone()">Opłacone</button>
+<button type="button" (click)="pokaz_dozaplaty()">Do zapłaty</button>
+
+
+
+<table>
+  <tr>
+    <th>Nazwa</th>
+    <th>Kategoria</th>
+    <th>Kwota</th>
+    <th>Data</th>
+    <th>Status</th>
+    <th>Akcje</th>
+  </tr>
+
+@for (wydatek of wydatki; track $index) {
+
+  @if (
+    (
+      szukaj == "" ||
+      wydatek.nazwa.toLowerCase().startsWith(szukaj.toLowerCase())
+    )
+    &&
+    (
+      wszystkie ||
+      (oplacone && wydatek.oplacony == true) ||
+      (dozaplaty && wydatek.oplacony == false)
+    )
+  ) {
+
+
+
+  <tr>
+     <td>{{wydatek.nazwa}}</td>
+    <td>{{wydatek.kategoria}}</td>
+    <td>{{wydatek.kwota}}</td>
+    <td>{{wydatek.data}}</td>
+    <td>{{wydatek.oplacony}}</td>
+    <td>usuń</td>
+  </tr>
+
+
+
+}
+}
+</table>
+
+
+<p>Stany kontrolek</p>
+{{wszystkie}}
+{{oplacone}}
+{{dozaplaty}}

@@ -15,6 +15,7 @@ export class App {
   zmienna1: number = 150;
   zmienna2 = "Adam";
   zmienna3 = true;
+  tekst="";
   //zmienna3: boolean = true;
   /*
     1 linijka 
@@ -32,5 +33,9 @@ export class App {
 
   }
 
+  wysylanie(){
+  this.tekst="Wysłano formularz";
+
+  }
 
 }

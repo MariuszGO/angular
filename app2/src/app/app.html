@@ -19,3 +19,51 @@
   <tr scope="row"><td>{{uczniowie[4]}}</td></tr>
   <tr scope="row"><td>{{uczniowie[5]}}</td></tr>
 </table>
+
+  <table>
+
+    @for (auto of samochody; track $index) {
+      <tr>
+        <td>{{auto.marka}}</td>
+        <td>{{auto.model}}</td>
+        <td>{{auto.pojemnosc}}</td>
+      </tr>
+    }
+
+  
+</table>
+
+
+<form>
+  <label for="nasz_tekst">Podaj tekst</label>
+<input type="text" id="nasz_tekst" name="nasz_tekst" [(ngModel)]="nasz_tekst">
+</form>
+
+
+<form (ngSubmit)="dodaj_do_samochodow()">
+  <label for="marka">Marka: </label>
+<input type="text" id="marka" name="marka" [(ngModel)]="samochod.marka">
+ <label for="model">Model:</label>
+<input type="text" id="model" name="model" [(ngModel)]="samochod.model">
+ <label for="poj">Pojemność</label>
+<input type="text" id="poj" name="p" [(ngModel)]="samochod.pojemnosc">
+
+<button type="submit">Dodaj</button>
+</form>
+
+
+
+
+
+  <table>
+
+    @for (auto of samochody; track $index) {
+      <tr>
+        <td>{{auto.marka}}</td>
+        <td>{{auto.model}}</td>
+        <td>{{auto.pojemnosc}}</td>
+      </tr>
+    }
+
+  
+</table>
