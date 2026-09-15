@@ -20,6 +20,11 @@
   <tr scope="row"><td>{{uczniowie[5]}}</td></tr>
 </table>
 
+@for (ucz of uczniowie; track $index){
+  <h3>{{ucz}}</h3>
+}
+
+
   <table>
 
     @for (auto of samochody; track $index) {
