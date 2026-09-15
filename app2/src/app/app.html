@@ -22,21 +22,15 @@
 
 @for (ucz of uczniowie; track $index){
   <h3>{{ucz}}</h3>
+
+  @if (ucz == "Adam"){
+    <H3>Na liście jest ADAM</H3>
+  }
+
 }
 
 
-  <table>
 
-    @for (auto of samochody; track $index) {
-      <tr>
-        <td>{{auto.marka}}</td>
-        <td>{{auto.model}}</td>
-        <td>{{auto.pojemnosc}}</td>
-      </tr>
-    }
-
-  
-</table>
 
 
 <form>
@@ -47,21 +41,16 @@
 
 <form (ngSubmit)="dodaj_do_samochodow()">
   <label for="marka">Marka: </label>
-<input type="text" id="marka" name="marka" [(ngModel)]="samochod.marka">
+<input type="text" id="marka" name="marka" [(ngModel)]="samochod.marka"><br>
  <label for="model">Model:</label>
-<input type="text" id="model" name="model" [(ngModel)]="samochod.model">
+<input type="text" id="model" name="model" [(ngModel)]="samochod.model"><br>
  <label for="poj">Pojemność</label>
-<input type="text" id="poj" name="p" [(ngModel)]="samochod.pojemnosc">
+<input type="text" id="poj" name="p" [(ngModel)]="samochod.pojemnosc"><br>
 
 <button type="submit">Dodaj</button>
 </form>
-
-
-
-
-
-  <table>
-
+  <table id="tabelka">
+    <tr><th>Marka</th><th>Model</th><th>Pojemność</th></tr>
     @for (auto of samochody; track $index) {
       <tr>
         <td>{{auto.marka}}</td>
@@ -72,3 +61,8 @@
 
   
 </table>
+
+
+<br>
+<br>
+

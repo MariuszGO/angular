@@ -8,9 +8,17 @@ p {
 table, td,th{
     border: 1px solid;
     border-collapse: collapse;
+    width: auto;
 }
 
 th{
     color: brown;
     size: 0.3em;
+}
+
+input, button{
+    margin: 5px;
+}
+#tabelka{
+    margin: auto;
 }

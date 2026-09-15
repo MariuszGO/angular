@@ -15,3 +15,20 @@
 </form>
 
 <p>{{tekst}}</p>
+
+
+<p>{{imiona[0]}}</p>
+<p>{{imiona[1]}}</p>
+<p>{{imiona[2]}}</p>
+<p>{{imiona[3]}}</p>
+<p>{{imiona[4]}}</p>
+
+<hr>
+@for (imie of imiona; track $index){
+    @if(imie == "Adam"){
+        <p>JEST TAM ADAM</p>
+    }
+    <p>{{imie}}</p>
+}
+
+

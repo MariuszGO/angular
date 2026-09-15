@@ -16,6 +16,8 @@ export class App {
   zmienna2 = "Adam";
   zmienna3 = true;
   tekst="";
+
+  imiona: string[] = ["Adam", "Paweł", "Jan", "Krzysztof" , "Marcin" ];
   //zmienna3: boolean = true;
   /*
     1 linijka 
