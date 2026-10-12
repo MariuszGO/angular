@@ -1,3 +1,4 @@
+//ADAM
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -19,10 +20,11 @@ export class App {
   logiczna: boolean = true;
   tablica: number[] = [12,23,243];
 
-  uczniowie: {imie: string, nazwisko: string} [] = [{imie: "Jan", nazwisko: "Kowal"} ,
+  uczniowie = [{imie: "Jan", nazwisko: "Kowal"} ,
     {imie: "Paweł", nazwisko: "Kaczor"},
     {imie: "Adam", nazwisko:"Nowak"}
   ] 
+
 
 
 

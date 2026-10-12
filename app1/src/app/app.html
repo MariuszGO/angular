@@ -1,3 +1,4 @@
+<!--ADAM-->
 <H1>Podstawy Angular</H1>
 
 <p>To jest zmienna {{zmienna1}} a to jest {{zmienna2}}</p>
@@ -19,3 +20,7 @@
 
 <p>To jest imie i nazwisko {{uczniowie[1].imie}} oraz {{uczniowie[1].nazwisko}}</p>
 
+
+  @for(ucz of uczniowie; track uczniowie){
+    <p>{{ucz.imie}}</p>
+  }
