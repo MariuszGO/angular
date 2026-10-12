@@ -1,28 +1,67 @@
-
+<div class="container mt-4">
+<aside>
 <h2>Dodawanie osoby</h2>
+<form>
 
-<input [(ngModel)]="imie" placeholder="Imię">
+<label for="imie">Imie: </label>
+<input [(ngModel)]="imie" placeholder="Imię" name="imie" id="imie"><br>
 
-<input [(ngModel)]="nazwisko" placeholder="Nazwisko">
+<label for="nazwisko">Nazwisko: </label>
+<input [(ngModel)]="nazwisko" placeholder="Nazwisko" name="nazwisko" id="nazwisko"><br>
 
-<input [(ngModel)]="wiek" type="number" placeholder="Wiek">
 
-<button (click)="dodaj()">Dodaj</button>
+<label for="wiek">Wiek: </label>
+<input [(ngModel)]="wiek" type="number" placeholder="Wiek" name="wiek" id="wiek"><br>
 
+<label for="ulica">Ulica: </label>
+<input [(ngModel)]="ulica" type="text" placeholder="ulica" name="ulica" id="ulica"><br>
+
+<label for="nr">Nr: </label>
+<input [(ngModel)]="nr" type="number" placeholder="nr" name="nr"id="nr"><br>
+
+<label for="imie">Miejscowość: </label>
+<input [(ngModel)]="miejscowosc" type="text" placeholder="miejscowosc" id="miejscowosc"><br>
+
+<button  class="btn btn-success" (click)="dodaj()">Dodaj</button>
+</form>
+</aside>
+<section>
 <h2>Lista osób</h2>
 
-<table border="1">
+
+
+    <table class="table table-striped table-bordered table-hover">
+    <thead class="table-dark">
   <tr>
     <th>Imię</th>
     <th>Nazwisko</th>
     <th>Wiek</th>
-  </tr>
+    <th>Ulica</th>
+    <th>Nr</th>
+    <th>Miejscowosc</th>
+    <th>Usuwanie</th>
 
+    
+  </tr>
+</thead>
   @for (osoba of osoby; track $index) {
     <tr>
       <td>{{ osoba.imie }}</td>
       <td>{{ osoba.nazwisko }}</td>
       <td>{{ osoba.wiek }}</td>
+      <td>{{ osoba.ulica }}</td>
+      <td>{{ osoba.nr }}</td>
+      <td>{{ osoba.miejscowosc }}</td>
+        <td>
+        <button (click)="usun(osoba._id)">Usuń</button>
+      </td>
+
     </tr>
   }
 </table>
+
+</section>
+
+</div>
+
+<

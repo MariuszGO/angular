@@ -1,12 +1,12 @@
-
+const { MongoClient, ObjectId } = require('mongodb');
  // Importujemy bibliotekę Express, która służy do tworzenia serwera
 const express = require('express');
 
 // Importujemy CORS, aby Angular mógł komunikować się z serwerem
 const cors = require('cors');
 
-// Importujemy MongoClient, który umożliwia połączenie z MongoDB
-const { MongoClient } = require('mongodb');
+
+
 
 // Tworzymy aplikację Express
 const app = express();
@@ -69,6 +69,31 @@ app.post('/osoby', async (req, res) => {
 // ------------------------------------
 // URUCHOMIENIE SERWERA
 // ------------------------------------
+
+ // Importuj ObjectId na początku pliku razem z MongoClient:
+// const { MongoClient, ObjectId } = require('mongodb');
+
+// ------------------------------------
+// USUWANIE OSOBY Z BAZY DANYCH
+// ------------------------------------
+
+// DELETE /osoby/:id - usuwanie osoby o podanym identyfikatorze
+app.delete('/osoby/:id', async (req, res) => {
+
+    // Pobieramy identyfikator osoby z adresu URL
+    const id = req.params.id;
+
+    // Usuwamy osobę z bazy MongoDB
+    await osoby.deleteOne({ _id: new ObjectId(id) });
+
+    // Wysyłamy odpowiedź do Angulara
+    res.json({ komunikat: 'Usunięto osobę' });
+
+});
+
+
+
+
 
 // Funkcja uruchamiająca połączenie z MongoDB i serwer
 async function start() {

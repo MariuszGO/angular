@@ -15,6 +15,9 @@ export class App {
   imie = '';
   nazwisko = '';
   wiek = 0;
+  ulica = '';
+  nr = 0;
+  miejscowosc = '';
 
   // Tablica przechowująca osoby pobrane z MongoDB
   osoby: any[] = [];
@@ -56,7 +59,10 @@ export class App {
     const osoba = {
       imie: this.imie,
       nazwisko: this.nazwisko,
-      wiek: this.wiek
+      wiek: this.wiek,
+      ulica: this.ulica,
+      nr: this.nr,
+      miejscowosc: this.miejscowosc
     };
 
     // Wysyłamy obiekt osoba do serwera metodą POST
@@ -73,7 +79,25 @@ export class App {
         this.imie = '';
         this.nazwisko = '';
         this.wiek = 0;
+        this.ulica = '';
+        this.nr = 0;
+        this.miejscowosc ='';
 
       });
   }
+
+
+  
+ // ------------------------------------
+ // USUWANIE OSOBY Z BAZY DANYCH
+ // ------------------------------------
+
+ usun(id: string) {
+
+   // Wysyłamy żądanie DELETE do serwera
+   // W adresie przekazujemy identyfikator osoby
+   this.http.delete('http://localhost:3000/osoby/' + id).subscribe(() => {this.pobierz();});
+ }
+
+
 }
