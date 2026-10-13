@@ -29,3 +29,7 @@ section p,h2{
 section h2{
     text-align: center;
 }
+
+section img{
+    float: right;
+}

@@ -11,8 +11,8 @@ export class App {
   tytul = 'Sklep komputerowy';
 
   produkty = [
-    { nazwa: 'Laptop Lenovo', cena: 2500 },
-    { nazwa: 'Mysz Logitech', cena: 120 },
-    { nazwa: 'Klawiatura Dell', cena: 180 }
+    { nazwa: 'Laptop Lenovo', cena: 2500, zdjecie: 'laptop.png' },
+    { nazwa: 'Mysz Logitech', cena: 120, zdjecie: 'mysz.jpg' },
+    { nazwa: 'Klawiatura Dell', cena: 180, zdjecie: 'klawiatura.jpg' }
   ];
 }

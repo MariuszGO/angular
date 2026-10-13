@@ -9,6 +9,7 @@ import { Component, Input } from '@angular/core';
 export class Produkt {
   @Input() nazwa = '';
   @Input() cena = 0;
+  @Input() zdjecie ='';
 
   ilosc = 0;
 
