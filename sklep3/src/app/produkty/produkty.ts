@@ -13,5 +13,9 @@ export class Produkty {
   @Input() wiek = 0;
 
   liczba: number = 100;
+  zmienna = 0;
+  suma(){
+    this.zmienna = this.wiek + 10;
+  }
 
 }
