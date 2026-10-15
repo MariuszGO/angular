@@ -1,26 +1,63 @@
-<!--ADAM-->
-<H1>Podstawy Angular</H1>
+<!--SEBASTIAN_LUDWIN-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+<body>
+  <div class="container">
+  <h1>Lista zadań</h1>
 
-<p>To jest zmienna {{zmienna1}} a to jest {{zmienna2}}</p>
+  <select [(ngModel)]="filtr" class="form-select" >
+    <option value="Wszystkie" selected>Wszystkie</option>
+    <option value="Wykonane">Wykonane</option>
+    <option value="Niewykonane">Niewykonane</option>
+  </select>
 
-<form>
+  @for (item of zadania; track $index) {
+    <div class="list-group">
+      @if(filtr == "Wszystkie"){
+        <div class="list-group-item">
+        <p>{{item.id}}</p>
+        {{item.nazwa}}
+        @if(item.wykonane == true){
+          Wykonane
+        }@else {
+          Niewykonane 
+        }
+        </div>
 
-<input type="number" name="imie" [(ngModel)]="zmienna1">
-
-
-
-
-</form>
-
-<p>To jest zmienna {{zmienna1}}</p>
-
-<p>Zmienna logiczna: {{logiczna}}</p>
-
-<p>Zmienna tablicowa {{tablica[1]}}</p>
-
-<p>To jest imie i nazwisko {{uczniowie[1].imie}} oraz {{uczniowie[1].nazwisko}}</p>
-
-
-  @for(ucz of uczniowie; track uczniowie){
-    <p>{{ucz.imie}}</p>
+      }
+      @if(filtr == "Wykonane"){
+        @if(item.wykonane == true){
+          <div class="list-group-item">
+        <p>{{item.id}}</p>
+        {{item.nazwa}}
+        Wykonane
+          </div>
+        }
+      }
+      @if(filtr == "Niewykonane"){
+        @if(item.wykonane != true){
+          <div class="list-group-item">
+        <p>{{item.id}}</p>
+        {{item.nazwa}}
+         Niewykonane
+          </div>
+        }
+      }
+    </div>
   }
+
+  <form >
+    <textarea [(ngModel)]="nazwa2" id="nazwa2" name="nazwa2" class="form-control" placeholder="Nazwa zadania"></textarea> 
+    <input [(ngModel)]="wykonane2" id="wykonane2" name="wykonane2" class="form-check-input" type="checkbox">Wykonane <br>
+    <button (click)="dodajZadanie()" class="btn btn-primary">Dodaj zadanie</button>
+    
+  </form>
+</div>
+</body>
+
+</html>
