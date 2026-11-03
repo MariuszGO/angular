@@ -1,0 +1,60 @@
+<div class="container mt-4">
+
+  <h2>Plan nauki do egzaminu</h2>
+
+  <div class="mb-5">
+
+    <h4>Dodaj temat do nauki</h4>
+
+    <app-dodaj-temat
+      (tematDodany)="dodajTemat($event)">
+    </app-dodaj-temat>
+
+  </div>
+
+  <h4>Lista tematów</h4>
+
+  <ul class="list-group">
+
+    @for (temat of tematy; track $index) {
+
+      <li>
+
+        <span>
+          {{ temat.nazwa }} -
+          {{ temat.czas }} minut
+        </span>
+
+        <button
+          class="btn btn-primary"
+          (click)="usunTemat($index)">
+          Usuń
+        </button>
+
+      </li>
+
+    } @empty {
+
+      <li>
+        Brak tematów w planie nauki
+      </li>
+
+    }
+
+  </ul>
+
+  <div class="mt-4">
+
+    <p>Liczba tematów: {{ tematy.length }}</p>
+
+    <p>Łączny czas nauki: {{ sumaCzasu() }} minut</p>
+
+    <button
+      class="btn btn-primary"
+      (click)="wyczyscPlan()">
+      Wyczyść plan
+    </button>
+
+  </div>
+
+</div>

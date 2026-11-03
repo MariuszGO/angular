@@ -11,15 +11,17 @@ export class DodajUcznia {
 
   imie = '';
   nazwisko = '';
+  wiek = 0;
 
   @Output() nowyUczen = new EventEmitter<string>();
 
   dodaj() {
-    const uczen = this.imie + ' ' + this.nazwisko;
+    const uczen = this.imie + ' ' + this.nazwisko + ' ' + this.wiek;
 
     this.nowyUczen.emit(uczen);
 
     this.imie = '';
     this.nazwisko = '';
+    this.wiek = 0;
   }
 }

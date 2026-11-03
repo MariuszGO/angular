@@ -1,0 +1,29 @@
+.kontener {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.formularz {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+mat-form-field {
+  flex: 1;
+}
+
+.zadanie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.gotowe {
+  text-decoration: line-through;
+  color: gray;
+}

@@ -14,6 +14,13 @@
                     <option [value]="i">{{ i }}</option>
                 }
             </select>
+    <select [(ngModel)]="wiek1" name="Twoj_wiek1" id="Twoj_wiek1">
+                @for (j of liczby1; track $index) {
+                    <option [value]="j">{{ j }}</option>
+                }
+            </select>
+
+
         <button (click)="funkcja('Adam')">Kliknij</button>
         </form>
     </aside>

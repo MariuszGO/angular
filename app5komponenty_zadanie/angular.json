@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "app3komp": {
+    "app5komponenty_zadanie": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -56,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "app3komp:build:production"
+              "buildTarget": "app5komponenty_zadanie:build:production"
             },
             "development": {
-              "buildTarget": "app3komp:build:development"
+              "buildTarget": "app5komponenty_zadanie:build:development"
             }
           },
           "defaultConfiguration": "development"
