@@ -46,11 +46,26 @@
 </select><br>
 </label>
 
-<button (click)="dany_dzien(dany_d)">Pokaż</button>
-<button (click)="sortowanie_godzina()">Sortuj</button>
+
+
+<button (click)="dany_dzien()">Pokaż</button>
+
 <table>
-    <tr><th>id</th><th>uczeń</th><th>dzień</th><th>godzina</th><th>stanowisko</th><th>anuluj</th></tr>
+    <tr><th>id</th><th>uczeń</th><th>dzień</th><th>godzina <button (click)="sortowanie_godzina()"> &uarr; </button> <button (click)="sortowanie_godzina1()"> &darr; </button></th><th>stanowisko</th><th>anuluj</th></tr>
     @for(r of wynik; track r.id){
         <tr><td>{{r.id}}</td><td>{{r.uczen}}</td><td>{{r.dzien}}</td><td>{{r.godzina}}</td><td>{{r.stanowisko}}</td><td><button type="button" (click)="anuluj(r.id)">anuluj</button></td></tr>
     }
 </table>
+
+
+
+<p>Liczba wszystkich rezerwacji: {{ rezerwacje.length }}</p>
+<p>Liczba aktualnie widocznych rezewacji: {{ wynik.length }}</p>
+<p>Liczba rezerwacji PC-1: {{pc_1()}}
+<ul>
+    @for(im of wynik; track im.id){
+        <li> {{im.uczen}}</li>
+    }
+
+                                
+
