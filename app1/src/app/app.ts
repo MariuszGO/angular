@@ -1,113 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { MatInput } from '@angular/material/input';
-import { MatLabel } from '@angular/material/input';
-import { MatFormField } from '@angular/material/input';
-import { MatIcon } from '@angular/material/icon';
 
+interface lisss{
+  id:number;
+  text:string;
+}
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [FormsModule, MatInput,MatLabel,MatFormField,MatIcon],
+  imports: [RouterOutlet,FormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  imie: string = '';
-  nazwisko: string = '';
-  ulica: string = '';
-  numerDomu: string = '';
-  kodPocztowy: string = '';
-  miejscowosc: string = '';
-  telefon: string = '';
-  wiek: number | null = null;
-  regulamin: boolean = false;
+  protected readonly title = signal('aplikacja_web');
+  imie_i_nazwisko:string = "";
+  nr_kursu:number = 0;
+  lista:lisss[] = [
+    {id:1,text:"Programowanie w C#"},
+    {id:2,text:"Angular dla początkujących"},
+    {id:3,text:"Kurs Django"}
+  ]
 
-  komunikatSukcesu: string = '';
-  adres:string = '';
-
-  poprawnyTelefon(): boolean{
-    return /^\d{3}-\d{3}-\d{3}$/.test(this.telefon.trim()) || /^\d{9}$/.test(this.telefon.trim());
-  }
-
-  poprawneImie(): boolean {
-    
-    return /^[a-zA-ZąćęłńóśźżĄĘĆŁŃÓŚŹŻ]{3,}$/.test(this.imie.trim());
-    
-  }
-
-  poprawneNazwisko(): boolean {
-    return /^[a-zA-ZąćęłńóśźżĄĘĆŁŃÓŚŹŻ]{3,}$/.test(this.nazwisko.trim());
-  }
-
-  poprawnaUlica(): boolean {
-    return /^[A-Za-ząćęłńóśźżĄĘĆŁŃÓŚŹŻ0-9-]{3,}$/.test(this.ulica.trim());
-  }
-
-  poprawnyNumerDomu(): boolean {
-    return /^[a-zA-Z0-9/]{1,5}$/.test(this.numerDomu.trim());
-  }
-
-  poprawnyKodPocztowy(): boolean {
-    return /^\d{2}-\d{3}$/.test(this.kodPocztowy.trim());
-  }
-
-  poprawnaMiejscowosc(): boolean {
-    return /^[A-Za-ząćęłńóśźżĄĘĆŁŃÓŚŹŻ-]{3,}$/.test(this.miejscowosc.trim());
-  }
-
-  poprawnyWiek(): boolean {
-    return this.wiek !== null &&
-           Number.isInteger(this.wiek) &&
-           this.wiek >= 1 &&
-           this.wiek <= 99;
-  }
-
-  czyFormularzPoprawny(): boolean {
-    return this.poprawneImie() &&
-           this.poprawneNazwisko() &&
-           this.poprawnaUlica() &&
-           this.poprawnyNumerDomu() &&
-           this.poprawnyKodPocztowy() &&
-           this.poprawnaMiejscowosc() &&
-           this.poprawnyWiek() &&
-           this.regulamin;
-  }
-
-  test():void{
-    this.imie = 'Jan';
-    this.nazwisko = 'Kowalski';
-    this.ulica = '3-Maja';
-    this.numerDomu = '22/33';
-    this.kodPocztowy = '38-300';
-    this.miejscowosc = 'Gorlice';
-    this.telefon = '514-254-998';
-    this.wiek = 22;
-    this.regulamin = true;
-    console.log(this.imie);
-
-  }
-
-  zarejestruj(): void {
-    // Kontrola również po stronie kodu, a nie tylko w przycisku.
-    if (!this.czyFormularzPoprawny()) {
-      return;
+  tja(){
+    if(this.imie_i_nazwisko != "")
+    {
+      if (this.nr_kursu - 1 < this.lista.length && this.nr_kursu - 1 >= 0) {
+        console.log(this.imie_i_nazwisko);
+        console.log(this.lista[this.nr_kursu - 1].text);
+      }else{
+        console.log("nieprawidłowy nr kurs");
+      }
     }
 
-    this.komunikatSukcesu =
-      `Zarejestrowano: ${this.imie.trim()} ${this.nazwisko.trim()}`;
 
-    this.adres = `Adres: ${this.miejscowosc.trim()} ${this.kodPocztowy.trim()} ${this.ulica.trim()} ${this.numerDomu.trim()}`;
-
-
-    this.imie = '';
-    this.nazwisko = '';
-    this.ulica = '';
-    this.numerDomu = '';
-    this.kodPocztowy = '';
-    this.miejscowosc = '';
-    this.telefon = '';
-    this.wiek = null;
-    this.regulamin = false;
   }
 }

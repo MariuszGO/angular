@@ -30,9 +30,27 @@
 </form>
 <p>{{komunikat}}</p>
 
+
+
+
+
+
+<label>Podaj dzień: 
+<select id="dz1" name="dz2s" [(ngModel)]="dany_d">
+    <option>Poniedziałek</option>
+    <option>Wtorek</option>
+    <option>Środa</option>
+    <option>Czwartek</option>
+    <option>Piątek</option>
+    <option>Wszystkie dni</option>
+</select><br>
+</label>
+
+<button (click)="dany_dzien(dany_d)">Pokaż</button>
+<button (click)="sortowanie_godzina()">Sortuj</button>
 <table>
     <tr><th>id</th><th>uczeń</th><th>dzień</th><th>godzina</th><th>stanowisko</th><th>anuluj</th></tr>
-    @for(r of rezerwacje; track r.id){
+    @for(r of wynik; track r.id){
         <tr><td>{{r.id}}</td><td>{{r.uczen}}</td><td>{{r.dzien}}</td><td>{{r.godzina}}</td><td>{{r.stanowisko}}</td><td><button type="button" (click)="anuluj(r.id)">anuluj</button></td></tr>
     }
 </table>

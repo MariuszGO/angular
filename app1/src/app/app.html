@@ -1,144 +1,20 @@
-<main class="kontener">
-  <h1>Formularz rejestracyjny</h1>
 
-  <form (ngSubmit)="zarejestruj()" novalidate class="exam">
-    <div class="pole">
-      <label for="imie">Imię</label>
-      <input id="imie" name="imie" type="text"
-             [(ngModel)]="imie"
-             [class.poprawne]="poprawneImie()"
-             [class.blad]="!poprawneImie()">
-      @if (!poprawneImie()) {
-        <small>Imię musi mieć co najmniej 3 znaki.</small>
-      }
-    </div>
+<h1> Liczba kursów: {{lista[2].id}}</h1>
+<ol>
+@for (item of lista; track item.id) {
+  <li>{{item.text}}</li>
+}
+</ol>
+<div class="form-group">
+  <form>
+  <label for="imie">imie i nazwisko <br>
+      <input type="text" class="form-control" name="imie" id="imie" [(ngModel)]="imie_i_nazwisko">
+  </label><br>
+  <label for="kursów">numer kursu <br>
+      <input type="number" class="form-control" name="kursów" id="kursów" [(ngModel)]="nr_kursu">
+  </label><br>
+  <button (click)="tja()" class="btn btn-primary">Zapisz do kursu</button>
+</form>
+</div>
 
-    
-        <div class="pole">
-  <mat-form-field class="example-full-width">
-      <mat-label for="nazwisko">Nazwisko</mat-label>
-      <input matInput id="nazwisko" name="nazwisko" type="text"
-             [(ngModel)]="nazwisko"
-             [class.poprawne]="poprawneNazwisko()"
-             [class.blad]="!poprawneNazwisko()">
-      @if (!poprawneNazwisko()) {
-        <small>Nazwisko musi mieć co najmniej 2 znaki.</small>
-      }
-      </mat-form-field>
-    </div>
-
-    
-
-    <div class="pole">
-      <label for="ulica">Ulica</label>
-      <input id="ulica" name="ulica" type="text"
-             [(ngModel)]="ulica"
-             [class.poprawne]="poprawnaUlica()"
-             [class.blad]="!poprawnaUlica()">
-      @if (!poprawnaUlica()) {
-        <small>Ulica musi mieć co najmniej 3 znaki.</small>
-      }
-    </div>
-
-    <div class="pole">
-      <label for="numerDomu">Numer domu</label>
-      <input id="numerDomu" name="numerDomu" type="text"
-             [(ngModel)]="numerDomu"
-             [class.poprawne]="poprawnyNumerDomu()"
-             [class.blad]="!poprawnyNumerDomu()">
-      @if (!poprawnyNumerDomu()) {
-        <small>Podaj numer domu.</small>
-      }
-    </div>
-
-    <div class="pole">
-      <label for="kodPocztowy">Kod pocztowy</label>
-      <input id="kodPocztowy" name="kodPocztowy" type="text"
-             placeholder="00-000"
-             [(ngModel)]="kodPocztowy"
-             [class.poprawne]="poprawnyKodPocztowy()"
-             [class.blad]="!poprawnyKodPocztowy()">
-      @if (!poprawnyKodPocztowy()) {
-        <small>Kod pocztowy musi mieć format 00-000.</small>
-      }
-    </div>
-
-    <div class="pole">
-      <label for="miejscowosc">Miejscowość</label>
-      <input id="miejscowosc" name="miejscowosc" type="text"
-             [(ngModel)]="miejscowosc"
-             [class.poprawne]="poprawnaMiejscowosc()"
-             [class.blad]="!poprawnaMiejscowosc()">
-      @if (!poprawnaMiejscowosc()) {
-        <small>Miejscowość musi mieć co najmniej 2 znaki.</small>
-      }
-    </div>
-
-  <div class="pole">
-      <label for="telefon">Telefon</label>
-      <input id="telefon" name="telefon" type="text"
-             [(ngModel)]="telefon"
-             [class.poprawne]="poprawnyTelefon()"
-             [class.blad]="!poprawnyTelefon()">
-      @if (!poprawnyTelefon()) {
-        <small>Telefon musi mieć poprawny format 000-000-000 lub 000000000</small>
-      }
-    </div>
-
-
-
-    <div class="pole">
-      <label for="wiek">Wiek</label>
-      <input id="wiek" name="wiek" type="number" min="1" max="99"
-             [(ngModel)]="wiek"
-             [class.poprawne]="poprawnyWiek()"
-             [class.blad]="!poprawnyWiek()">
-      @if (!poprawnyWiek()) {
-        <small>Podaj liczbę całkowitą od 1 do 99.</small>
-      }
-    </div>
-
-    <div class="pole">
-      <label class="etykieta-checkbox">
-        <input name="regulamin" type="checkbox" [(ngModel)]="regulamin">
-        Akceptuję regulamin
-      </label>
-      @if (!regulamin) {
-        <small>Zaakceptuj regulamin, aby się zarejestrować.</small>
-      }
-    </div>
-
-    <div class="panel"
-         [style.background-color]="czyFormularzPoprawny() ? '#e3f5e6' : '#ffe5e5'">
-      <p [style.color]="czyFormularzPoprawny() ? 'green' : 'darkred'">
-        @if (czyFormularzPoprawny()) {
-          Formularz jest poprawny. Możesz się zarejestrować.
-        } @else {
-          Popraw dane w formularzu i zaakceptuj regulamin.
-        }
-      </p>
-    </div>
-
-    <button type="submit" [disabled]="!czyFormularzPoprawny()">
-      Zarejestruj
-    </button>
-
-      <div class="example-button-row">
-    <div class="example-flex-container">
-         
-    <button matFab extended type="button" (click)="test()">
-    <mat-icon>favorite</mat-icon>
-      Dane testowe
-    </button>
-  </div>
-  </div>
-
-  </form>
-
-
-
-  @if (komunikatSukcesu !== '') {
-    <p class="sukces">{{ komunikatSukcesu }}</p>
-    <p class="sukces">{{ adres }}</p>
-  }
-</main>
+<router-outlet />

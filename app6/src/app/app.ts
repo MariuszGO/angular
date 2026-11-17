@@ -13,7 +13,7 @@ export class App {
                  id: 1, 
                  uczen: 'Anna Kowalska', 
                  dzien: 'Poniedziałek',
-                 godzina: '8:00', 
+                 godzina: '11:00', 
                  stanowisko: 'PC-1'
                 },
                  {
@@ -38,6 +38,8 @@ export class App {
                  stanowisko: 'PC-3'
                 }
   ]
+wynik = this.rezerwacje;
+
 id: number = 0;
 imie: string = '';
 dzien: string = '';
@@ -47,8 +49,8 @@ komunikat: string = '';
 
 dodaj() {
   this.id = this.rezerwacje.reduce((max, r) => Math.max(max, r.id), 0) + 1;
-  this.ko
-  if(this.imie != '' && this.dzien != '' && this.godzina != '' && this.stanowisko !=''){
+  this.komunikat = '';
+  if(this.imie.trim() != '' && this.dzien != '' && this.godzina != '' && this.stanowisko !=''){
 
   this.rezerwacje.push({
     id: this.id,
@@ -75,5 +77,28 @@ anuluj(id: number){
 //     this.rezerwacje.splice(index, 1);
 //   }
 // }
+
+dany_d: string = '';
+
+dany_dzien(){
+this.wynik = this.rezerwacje;
+if(this.dany_d != "Wszystkie dni"){
+  this.wynik = this.wynik.filter(r => r.dzien == this.dany_d);
+  } 
+  else{
+    console.log("Wszyskie dni");
+  }
+
+}
+
+
+sortowanie_godzina(){
+this.wynik = this.rezerwacje;
+
+  this.wynik = this.wynik.sort();
+ 
+
+}
+
 
 }
