@@ -1,140 +1,97 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  
-  rezerwacje = [{
-                 id: 1, 
-                 uczen: 'Anna Kowalska', 
-                 dzien: 'Poniedziałek',
-                 godzina: '11:00', 
-                 stanowisko: 'PC-1'
-                },
-                 {
-                 id: 2, 
-                 uczen: 'Jan Nowak', 
-                 dzien: 'Poniedziałek',
-                 godzina: '8:00', 
-                 stanowisko: 'PC-2'
-                },
-                {
-                 id: 3, 
-                 uczen: 'Maria Lis', 
-                 dzien: 'Wtorek',
-                 godzina: '9:00', 
-                 stanowisko: 'PC-1'
-                },
-                 {
-                 id: 4, 
-                 uczen: 'Piotr Mazur', 
-                 dzien: 'Środa',
-                 godzina: '10:00', 
-                 stanowisko: 'PC-3'
-                }
-  ]
-wynik = this.rezerwacje; // to jest tylko referencja
-tmp = this.rezerwacje;
+  rezerwacje = [
+    { id: 1, uczen: 'Anna Kowalska', dzien: 'Poniedzia\u0142ek', godzina: '11:00', stanowisko: 'PC-1' },
+    { id: 2, uczen: 'Jan Nowak', dzien: 'Poniedzia\u0142ek', godzina: '8:00', stanowisko: 'PC-2' },
+    { id: 3, uczen: 'Maria Lis', dzien: 'Wtorek', godzina: '9:00', stanowisko: 'PC-1' },
+    { id: 4, uczen: 'Piotr Mazur', dzien: '\u015aroda', godzina: '10:00', stanowisko: 'PC-3' }
+  ];
 
-id: number = 0;
-imie: string = '';
-dzien: string = '';
-stanowisko: string = '';
-godzina: string = '';
-komunikat: string = '';
+  wynik = [...this.rezerwacje];
+  id = 0;
+  imie = '';
+  dzien = '';
+  stanowisko = '';
+  godzina = '';
+  komunikat = '';
+  dany_d = 'Wszystkie dni';
 
+  dodaj() {
+    this.komunikat = '';
 
-dodaj() {
-  this.id = this.rezerwacje.reduce((max, r) => Math.max(max, r.id), 0) + 1;
-  this.komunikat = '';
-  if(this.imie.trim() != '' && this.dzien != '' && this.godzina != '' && this.stanowisko !=''){
+    if (!this.imie.trim() || !this.dzien || !this.godzina || !this.stanowisko) {
+      this.komunikat = 'Prosz\u0119 uzupe\u0142ni\u0107 pola';
+      return;
+    }
 
-  const istnieje = this.rezerwacje.some(r =>
-  r.dzien === this.dzien &&
-  r.godzina === this.godzina &&
-  r.stanowisko === this.stanowisko);
+    const istnieje = this.rezerwacje.some(r =>
+      r.dzien === this.dzien &&
+      r.godzina === this.godzina &&
+      r.stanowisko === this.stanowisko
+    );
 
-if (istnieje) {
-                this.komunikat = "Ten termin jest już zajęty";
-                  } 
-                  else 
-                    {
-                   this.rezerwacje.push({
-                      id: this.id,
-                      uczen: this.imie,
-                      dzien: this.dzien,
-                      godzina: this.godzina,
-                      stanowisko: this.stanowisko
-                    });
-                  }
-                    } else
-                          {
-                            this.komunikat = "Proszę usupełnić pola";
-                            }
+    if (istnieje) {
+      this.komunikat = 'Ten termin jest ju\u017c zaj\u0119ty';
+      return;
+    }
 
-}
+    this.id = this.rezerwacje.reduce((max, r) => Math.max(max, r.id), 0) + 1;
+    const nowaRezerwacja = {
+      id: this.id,
+      uczen: this.imie.trim(),
+      dzien: this.dzien,
+      godzina: this.godzina,
+      stanowisko: this.stanowisko
+    };
 
-anuluj(id: number){
-  this.rezerwacje = this.rezerwacje.filter(r => r.id !== id);
-   this.wynik = this.wynik.filter(r => r.id !== id);
- 
+    this.rezerwacje.push(nowaRezerwacja);
+    if (this.dany_d === 'Wszystkie dni' || this.dany_d === nowaRezerwacja.dzien) {
+      this.wynik = [...this.wynik, nowaRezerwacja];
+    }
 
-}
-
-// Wariant z użyciem splice:
-// anuluj(id: number) {
-//   const index = this.rezerwacje.findIndex(r => r.id === id);
-//   if (index !== -1) {
-//     this.rezerwacje.splice(index, 1);
-//   }
-// }
-
-dany_d: string = '';
-
-dany_dzien(){
-this.wynik = this.rezerwacje;
-if(this.dany_d != "Wszystkie dni"){
-  this.wynik = this.wynik.filter(r => r.dzien == this.dany_d);
-
-
-
-  } 
-  else{
-    console.log("Wszyskie dni");
+    this.imie = '';
+    this.dzien = '';
+    this.godzina = '';
+    this.stanowisko = '';
   }
-  if(this.wynik.length === 0){
-    this.komunikat = "LISTA PUSTA";
-    console.log('LISTA PUSTA');
+
+  anuluj(id: number) {
+    this.rezerwacje = this.rezerwacje.filter(r => r.id !== id);
+    this.wynik = this.wynik.filter(r => r.id !== id);
   }
-}
 
+  dany_dzien() {
+    this.komunikat = '';
+    this.wynik = this.dany_d === 'Wszystkie dni'
+      ? [...this.rezerwacje]
+      : this.rezerwacje.filter(r => r.dzien === this.dany_d);
 
-sortowanie_godzina() {
-  let kopia = [...this.wynik];
+    if (this.wynik.length === 0) {
+      this.komunikat = 'LISTA PUSTA';
+    }
+  }
 
-  this.wynik = kopia.sort((a, b) => {
-  return a.godzina.localeCompare(b.godzina, 'pl', { numeric: true });
-  });
-}
+  sortowanie_godzina() {
+    this.wynik = [...this.wynik].sort((a, b) =>
+      a.godzina.localeCompare(b.godzina, 'pl', { numeric: true })
+    );
+  }
 
+  sortowanie_godzina1() {
+    this.wynik = [...this.wynik].sort((a, b) =>
+      b.godzina.localeCompare(a.godzina, 'pl', { numeric: true })
+    );
+  }
 
-sortowanie_godzina1() {
-  let kopia = [...this.wynik];
-
-  this.wynik = kopia.sort((a, b) => {
-  return b.godzina.localeCompare(a.godzina, 'pl', { numeric: true });
-  });
-}
-
-
-pc_1(): number {
-  return this.rezerwacje.filter(r => r.stanowisko === "PC-1").length;
-}
-
-
+  pc_1(): number {
+    return this.rezerwacje.filter(r => r.stanowisko === 'PC-1').length;
+  }
 }

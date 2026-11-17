@@ -1,71 +1,88 @@
-<H1>System rezerwacji stanowisk komputerowych</H1>
+<h1>System rezerwacji stanowisk komputerowych</h1>
 
 <form (ngSubmit)="dodaj()">
-<label for="im">Imię i nazwisko ucznia: </label>
-<input type="text" id="im" name="im" [(ngModel)]="imie"><br>
-<label for="dz">Dzień tygodnia: </label>
-<select id="dz" name="dz" [(ngModel)]="dzien">
-    <option>Poniedziałek</option>
+  <label for="im">Imi&#281; i nazwisko ucznia:</label>
+  <input type="text" id="im" name="im" [(ngModel)]="imie"><br>
+
+  <label for="dz">Dzie&#324; tygodnia:</label>
+  <select id="dz" name="dz" [(ngModel)]="dzien">
+    <option value="">Wybierz dzie&#324;</option>
+    <option>Poniedzia&#322;ek</option>
     <option>Wtorek</option>
-    <option>Środa</option>
+    <option>&#346;roda</option>
     <option>Czwartek</option>
-    <option>Piątek</option>
-</select><br>
-<label for="godzina">Godzina: </label>
-<select id="godzina" name="go" [(ngModel)]="godzina">
+    <option>Pi&#261;tek</option>
+  </select><br>
+
+  <label for="godzina">Godzina:</label>
+  <select id="godzina" name="godzina" [(ngModel)]="godzina">
+    <option value="">Wybierz godzin&#281;</option>
     <option>8:00</option>
     <option>9:00</option>
     <option>10:00</option>
     <option>11:00</option>
     <option>12:00</option>
-</select><br>
-<label for="stanowisko">Stanowisko: </label>
-<select id="stanowisko" name="stanowisko" [(ngModel)]="stanowisko">
+  </select><br>
+
+  <label for="stanowisko">Stanowisko:</label>
+  <select id="stanowisko" name="stanowisko" [(ngModel)]="stanowisko">
+    <option value="">Wybierz stanowisko</option>
     <option>PC-1</option>
     <option>PC-2</option>
     <option>PC-3</option>
     <option>PC-4</option>
-</select><br>
-<button>zarezerwuj</button>
+  </select><br>
+
+  <button type="submit">Zarezerwuj</button>
 </form>
-<p>{{komunikat}}</p>
 
+<p>{{ komunikat }}</p>
 
-
-
-
-
-<label>Podaj dzień: 
-<select id="dz1" name="dz2s" [(ngModel)]="dany_d">
-    <option>Poniedziałek</option>
-    <option>Wtorek</option>
-    <option>Środa</option>
-    <option>Czwartek</option>
-    <option>Piątek</option>
-    <option>Wszystkie dni</option>
-</select><br>
-</label>
-
-
-
-<button (click)="dany_dzien()">Pokaż</button>
+<label for="dz1">Podaj dzie&#324;:</label>
+<select id="dz1" name="dz1" [(ngModel)]="dany_d">
+  <option>Poniedzia&#322;ek</option>
+  <option>Wtorek</option>
+  <option>&#346;roda</option>
+  <option>Czwartek</option>
+  <option>Pi&#261;tek</option>
+  <option>Wszystkie dni</option>
+</select>
+<button type="button" (click)="dany_dzien()">Pokaż</button>
 
 <table>
-    <tr><th>id</th><th>uczeń</th><th>dzień</th><th>godzina <button (click)="sortowanie_godzina()"> &uarr; </button> <button (click)="sortowanie_godzina1()"> &darr; </button></th><th>stanowisko</th><th>anuluj</th></tr>
-    @for(r of wynik; track r.id){
-        <tr><td>{{r.id}}</td><td>{{r.uczen}}</td><td>{{r.dzien}}</td><td>{{r.godzina}}</td><td>{{r.stanowisko}}</td><td><button type="button" (click)="anuluj(r.id)">anuluj</button></td></tr>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Ucze&#324;</th>
+      <th>Dzie&#324;</th>
+      <th>Godzina
+        <button type="button" (click)="sortowanie_godzina()">&uarr;</button>
+        <button type="button" (click)="sortowanie_godzina1()">&darr;</button>
+      </th>
+      <th>Stanowisko</th>
+      <th>Anuluj</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (r of wynik; track r.id) {
+      <tr>
+        <td>{{ r.id }}</td>
+        <td>{{ r.uczen }}</td>
+        <td>{{ r.dzien }}</td>
+        <td>{{ r.godzina }}</td>
+        <td>{{ r.stanowisko }}</td>
+        <td><button type="button" (click)="anuluj(r.id)">Anuluj</button></td>
+      </tr>
     }
+  </tbody>
 </table>
 
-
-
 <p>Liczba wszystkich rezerwacji: {{ rezerwacje.length }}</p>
-<p>Liczba aktualnie widocznych rezewacji: {{ wynik.length }}</p>
-<p>Liczba rezerwacji PC-1: {{pc_1()}}
+<p>Liczba aktualnie widocznych rezerwacji: {{ wynik.length }}</p>
+<p>Liczba rezerwacji PC-1: {{ pc_1() }}</p>
+
 <ul>
-    @for(im of wynik; track im.id){
-        <li> {{im.uczen}}</li>
-    }
-
-                                
-
+  @for (rezerwacja of wynik; track rezerwacja.id) {
+    <li>{{ rezerwacja.uczen }}</li>
+  }
+</ul>
