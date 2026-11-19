@@ -1,6 +1,10 @@
 # Sklep1
 
+<<<<<<< HEAD
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.2.
+=======
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
+>>>>>>> f97bb84e9a6926807ec029d7d628f3a136a96e8b
 
 ## Development server
 
@@ -38,7 +42,11 @@ This will compile your project and store the build artifacts in the `dist/` dire
 
 ## Running unit tests
 
+<<<<<<< HEAD
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+=======
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+>>>>>>> f97bb84e9a6926807ec029d7d628f3a136a96e8b
 
 ```bash
 ng test

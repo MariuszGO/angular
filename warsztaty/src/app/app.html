@@ -1,0 +1,32 @@
+<form>
+  <label for="imie">Imie i nazwisko:</label>
+  <input type="text" [(ngModel)]="imie" name="imie" id="imie">  
+  <label for="em">Email:</label>
+  <input type="email" [(ngModel)]="email" name="em" id="em"><br>
+ 
+    @for(w of warsztaty; track w.cena){
+      <label for="w.name">{{w.nazwa}} - {{w.cena}} zł </label>
+      <input type="checkbox" [(ngModel)]="w.zaznaczony" name="w.name" id="w.name">
+       <br>  
+    }
+    <button (click)="wypisz()">Zapisz się</button>
+
+</form>
+@if(sprawdzanie == true){
+<p>Uczestnik: {{imie_w}}</p>
+<p>E-mail: {{email_w}}</p>
+<p>Wybrane warsztaty:</p>
+
+@for(w of warsztaty; track w.cena){
+  @if(w.zaznaczony == true){
+    <p>{{w.nazwa}} - {{w.cena}} zł</p>
+  }
+}
+}
+
+<p>Liczba wybranych warsztatów: {{ilosc}}</p>
+<p>Cena przed rabatem {{suma}}</p>
+@if(suma >= 250){
+  <p> Gratulacje! Uzyskałeś rabat 20%!</p>
+  <p> Do zapłaty {{rabat}}</p>
+}

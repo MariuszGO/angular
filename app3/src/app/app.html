@@ -1,0 +1,48 @@
+<h1 class="text-primary">Witaj Angular</h1>
+
+
+<p class="text-info bg-success">Nasza zmienna wynosi: {{zmienna}}</p>
+<p class="text-info bg-success">Wartość zmienej logicznej: {{zmienna3}}</p>
+
+<button class="btn btn-success" (click)="moja_funkcja()">Przycisk</button>
+
+
+
+<form (ngSubmit)="wysylanie()">
+    <label for="imie">Imie:</label>
+    <input type="text" id="imie" name="imie" [(ngModel)]="imie1">
+    <button>wyślij</button>
+</form>
+
+<p>{{tekst}}</p>
+
+
+<p>{{imiona[0]}}</p>
+<p>{{imiona[1]}}</p>
+<p>{{imiona[2]}}</p>
+<p>{{imiona[3]}}</p>
+<p>{{imiona[4]}}</p>
+
+<hr>
+@for (imie of imiona; track $index){
+    @if(imie == "Adam"){
+        <p>JEST TAM ADAM</p>
+    }
+    <p>{{imie}}</p>
+}
+
+
+<form>
+    <label for="imie">Podaj imie:</label>
+    <input type="text" id="imie" name="im" [(ngModel)]="imie"><br>
+    <label for="naz">Podaj nazwisko:</label>
+    <input type="text" id="naz" name="nazwisko" [(ngModel)]="nazwisko"><br>
+    <label for="w">Podaj wiek:</label>
+    <input type="text" id="w" name="wi" [(ngModel)]="wiek"><br>
+</form>
+<br>
+    @if(imie != "" && nazwisko != "" && wiek != 0){
+                    <H1>Nazywamy się: {{imie}} {{nazwisko}} i mam {{wiek}} lat</H1>
+                    }
+
+<br>

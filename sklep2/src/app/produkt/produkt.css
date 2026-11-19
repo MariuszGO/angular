@@ -1,0 +1,9 @@
+app-produkt{
+    width: 30%;
+    background-color: antiquewhite;
+}
+
+button{
+    margin: 5px;
+    box-shadow: 5px 5px 5px black;
+}

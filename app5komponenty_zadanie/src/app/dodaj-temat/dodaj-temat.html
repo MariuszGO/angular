@@ -1,0 +1,28 @@
+<form (ngSubmit)="dodaj()">
+
+  <div class="mb-3">
+    <label class="form-label">Nazwa tematu</label>
+    <input
+      type="text"
+      class="form-control"
+      name="nazwa"
+      [(ngModel)]="nazwa"
+      required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Czas nauki (minuty)</label>
+    <input
+      type="number"
+      class="form-control"
+      name="czas"
+      [(ngModel)]="czas"
+      min="1"
+      required>
+  </div>
+
+  <button class="btn btn-primary" type="submit">
+    Dodaj temat
+  </button>
+
+</form>

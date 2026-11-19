@@ -1,3 +1,43 @@
+<<<<<<< HEAD
+=======
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+
+
+.example-full-width {
+  width: 100%;
+}
+
+section {
+  display: flex;
+  align-items: center;
+}
+
+.example-label {
+  font-size: 14px;
+  margin: 0 16px 0 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  max-width: 600px;
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+>>>>>>> f97bb84e9a6926807ec029d7d628f3a136a96e8b
 .kontener {
   max-width: 520px;
   margin: 30px auto;
@@ -24,10 +64,18 @@
 
 .pole > input.poprawne {
   border-color: green;
+<<<<<<< HEAD
+=======
+  background-color: rgba(61, 231, 146, 0.753);
+>>>>>>> f97bb84e9a6926807ec029d7d628f3a136a96e8b
 }
 
 .pole > input.blad {
   border-color: red;
+<<<<<<< HEAD
+=======
+  background-color: rgba(228, 149, 165, 0.158);
+>>>>>>> f97bb84e9a6926807ec029d7d628f3a136a96e8b
 }
 
 small {
@@ -63,3 +111,14 @@ button:disabled {
   font-weight: bold;
   color: green;
 }
+<<<<<<< HEAD
+=======
+
+main{
+  border: 1px solid ;
+  border-color: #aaa;
+  background-color: #aaaaaa2a;
+
+
+}
+>>>>>>> f97bb84e9a6926807ec029d7d628f3a136a96e8b

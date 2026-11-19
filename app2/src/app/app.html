@@ -1,0 +1,68 @@
+<h1 class="text-bg-warning">Witaj w Angular</h1>
+<h2>{{nasz_tekst}}</h2>
+
+<button class="btn btn-primary" (click)="nowa_funkcja()">Przycisk</button>
+
+
+<p>Nasza zmiena ma wartość: {{zmienna}}</p>
+<p>Nasza zmiena ma wartość: {{zmienna1}}</p>
+<p>Zmienna logiczna {{zmienna_logiczna}}</p>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+      <tr ><th>Imię</th></tr>
+    </thead>
+  <tr scope="row"><td>{{uczniowie[0]}}</td></tr>
+  <tr scope="row"><td>{{uczniowie[1]}}</td></tr>
+  <tr scope="row"><td>{{uczniowie[2]}}</td></tr>
+  <tr scope="row"><td>{{uczniowie[3]}}</td></tr>
+  <tr scope="row"><td>{{uczniowie[4]}}</td></tr>
+  <tr scope="row"><td>{{uczniowie[5]}}</td></tr>
+</table>
+
+@for (ucz of uczniowie; track $index){
+  <h3>{{ucz}}</h3>
+
+  @if (ucz == "Adam"){
+    <H3>Na liście jest ADAM</H3>
+  }
+
+}
+
+
+
+
+
+<form>
+  <label for="nasz_tekst">Podaj tekst</label>
+<input type="text" id="nasz_tekst" name="nasz_tekst" [(ngModel)]="nasz_tekst">
+</form>
+
+
+<form (ngSubmit)="dodaj_do_samochodow()">
+  <label for="marka">Marka: </label>
+<input type="text" id="marka" name="marka" [(ngModel)]="samochod.marka"><br>
+ <label for="model">Model:</label>
+<input type="text" id="model" name="model" [(ngModel)]="samochod.model"><br>
+ <label for="poj">Pojemność</label>
+<input type="text" id="poj" name="p" [(ngModel)]="samochod.pojemnosc"><br>
+
+<button type="submit">Dodaj</button>
+</form>
+  <table id="tabelka">
+    <tr><th>Marka</th><th>Model</th><th>Pojemność</th></tr>
+    @for (auto of samochody; track $index) {
+      <tr>
+        <td>{{auto.marka}}</td>
+        <td>{{auto.model}}</td>
+        <td>{{auto.pojemnosc}}</td>
+      </tr>
+    }
+
+  
+</table>
+
+
+<br>
+<br>
+

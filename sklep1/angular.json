@@ -1,6 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+<<<<<<< HEAD
+=======
+  "cli": {
+    "packageManager": "npm"
+  },
+>>>>>>> f97bb84e9a6926807ec029d7d628f3a136a96e8b
   "newProjectRoot": "projects",
   "projects": {
     "sklep1": {
@@ -14,9 +20,12 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
+<<<<<<< HEAD
             "polyfills": [
               "zone.js"
             ],
+=======
+>>>>>>> f97bb84e9a6926807ec029d7d628f3a136a96e8b
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -64,6 +73,7 @@
           },
           "defaultConfiguration": "development"
         },
+<<<<<<< HEAD
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n"
         },
@@ -85,6 +95,10 @@
               "src/styles.css"
             ]
           }
+=======
+        "test": {
+          "builder": "@angular/build:unit-test"
+>>>>>>> f97bb84e9a6926807ec029d7d628f3a136a96e8b
         }
       }
     }

@@ -11,18 +11,31 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('app11');
+
 
   fontSize: number = 16;       // domyślna wielkość czcionki
   backgroundColor: string = '#ffffff'; // domyślny kolor tła
 
 
-  imie: string | null = null;
-  nazwisko: string | null = null;
+  imie: string = "";
+  nazwisko: string= "";
   wiek: number = 0;
+  wiek1: number = 0;
+  liczby1 = [1,2];
 
   liczby: number[] = Array.from({ length: 150 }, (_, i) => i + 1);
 
+  ngOnInit(){
+    this.dodaj();
+  }
+
+dodaj(){
+    for(let i=1;i<=150;i++){
+      this.liczby1.push(i);
+    }
+  }
+
+  
 
  funkcja(imie:String):String{
     imie = imie + "a";

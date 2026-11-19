@@ -1,0 +1,39 @@
+<form>
+  <label>Imię i nazwisko: 
+    <input type="text" [(ngModel)]="imieNazwisko" name="im">
+  </label>
+  
+  <label>Adres e-mail: 
+    <input type="email" [(ngModel)]="email" name="email">
+  </label>
+      <ul>
+          @for(k of kursy; track k)
+          {
+            <li>{{k.nazwa}} - {{k.cena}} zł <input type="checkbox"  name="k.nazwa" [(ngModel)]="k.czyZaznaczone"></li>
+          }
+      </ul>
+
+    <button (click)="zapisz()">Zapisz się</button>
+</form>
+
+
+<p><b>Uczestnik:</b> {{imie1}} </p>
+<p><b>E-mail:</b> {{email1}} </p>
+  @if(tmp == true)
+  {
+    @for(k of kursy; track k)
+    {
+      @if(k.czyZaznaczone == true)
+       {
+        <p>{{k.nazwa}} - {{k.cena}} zł</p> 
+       }
+    }
+  }
+<p><b>Liczba wybranych kursów:</b> {{ilosc}}</p>
+<p><b>Cena przed rabatem:</b> {{suma}}</p>
+  @if(ilosc >= 3)
+    {
+    <p><b>Gratulacje! Uzyskałeś rabat 25%!</b></p>
+    <p><b>Do zapłaty</b> {{sumarabat}} zł </p> 
+    }
+ 

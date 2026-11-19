@@ -1,0 +1,13 @@
+<h1>Lista uczniów</h1>
+
+<app-dodaj-ucznia
+  (nowyUczen)="dodajDoListy($event)">
+</app-dodaj-ucznia>
+
+<h3>Uczniowie:</h3>
+
+<ul>
+  @for (uczen of uczniowie; track $index) {
+    <li>{{ uczen }}</li>
+  }
+</ul>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <main class="kontener">
   <h1>Formularz rejestracyjny</h1>
 
@@ -110,3 +111,25 @@
     <p class="sukces">{{ komunikatSukcesu }}</p>
   }
 </main>
+=======
+
+<h1> Liczba kursów: {{lista[2].id}}</h1>
+<ol>
+@for (item of lista; track item.id) {
+  <li>{{item.text}}</li>
+}
+</ol>
+<div class="form-group">
+  <form>
+  <label for="imie">imie i nazwisko <br>
+      <input type="text" class="form-control" name="imie" id="imie" [(ngModel)]="imie_i_nazwisko">
+  </label><br>
+  <label for="kursów">numer kursu <br>
+      <input type="number" class="form-control" name="kursów" id="kursów" [(ngModel)]="nr_kursu">
+  </label><br>
+  <button (click)="tja()" class="btn btn-primary">Zapisz do kursu</button>
+</form>
+</div>
+
+<router-outlet />
+>>>>>>> f97bb84e9a6926807ec029d7d628f3a136a96e8b
