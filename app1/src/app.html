@@ -1,0 +1,12 @@
+<label for="imienazwisko">Imię i nazwisko: </label><input [(ngModel)] = "imienazwisko" type="text" name="imienazwisko">
+<label for="email">Email: </label><input [(ngModel)] = "email" type="email" name="email">
+<label></label>
+  @for(jezyk of tablica; track jezyk.index){
+    <input id="{{jezyk.index}}"type="checkbox" value="{{jezyk}}"><label>{{jezyk}}</label>
+     
+  }
+<button  (click)="funkcja()">Zapisz się</button>
+
+@if(wypisz){
+  <p>{{wynik}}</p>
+}

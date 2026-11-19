@@ -1,0 +1,65 @@
+.kontener {
+  max-width: 520px;
+  margin: 30px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.pole {
+  margin-bottom: 14px;
+}
+
+.pole > label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.pole > input {
+  width: 100%;
+  padding: 9px;
+  box-sizing: border-box;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+}
+
+.pole > input.poprawne {
+  border-color: green;
+}
+
+.pole > input.blad {
+  border-color: red;
+}
+
+small {
+  display: block;
+  margin-top: 4px;
+  color: darkred;
+}
+
+.pole > label.etykieta-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel {
+  padding: 10px;
+  margin: 16px 0;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 18px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sukces {
+  margin-top: 15px;
+  font-weight: bold;
+  color: green;
+}

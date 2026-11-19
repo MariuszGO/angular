@@ -1,0 +1,28 @@
+
+<h2>Dodawanie osoby</h2>
+
+<input [(ngModel)]="imie" placeholder="Imię">
+
+<input [(ngModel)]="nazwisko" placeholder="Nazwisko">
+
+<input [(ngModel)]="wiek" type="number" placeholder="Wiek">
+
+<button (click)="dodaj()">Dodaj</button>
+
+<h2>Lista osób</h2>
+
+<table border="1">
+  <tr>
+    <th>Imię</th>
+    <th>Nazwisko</th>
+    <th>Wiek</th>
+  </tr>
+
+  @for (osoba of osoby; track $index) {
+    <tr>
+      <td>{{ osoba.imie }}</td>
+      <td>{{ osoba.nazwisko }}</td>
+      <td>{{ osoba.wiek }}</td>
+    </tr>
+  }
+</table>

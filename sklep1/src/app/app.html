@@ -1,0 +1,8 @@
+<h1>{{ tytul }}</h1>
+
+@for (p of produkty; track p.nazwa) {
+  <app-produkt
+    [nazwa]="p.nazwa"
+    [cena]="p.cena">
+  </app-produkt>
+}

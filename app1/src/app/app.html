@@ -1,21 +1,112 @@
-<H1>Podstawy Angular</H1>
+<main class="kontener">
+  <h1>Formularz rejestracyjny</h1>
 
-<p>To jest zmienna {{zmienna1}} a to jest {{zmienna2}}</p>
+  <form (ngSubmit)="zarejestruj()" novalidate>
+    <div class="pole">
+      <label for="imie">Imię</label>
+      <input id="imie" name="imie" type="text"
+             [(ngModel)]="imie"
+             [class.poprawne]="poprawneImie()"
+             [class.blad]="!poprawneImie()">
+      @if (!poprawneImie()) {
+        <small>Imię musi mieć co najmniej 3 znaki.</small>
+      }
+    </div>
 
-<form>
+    <div class="pole">
+      <label for="nazwisko">Nazwisko</label>
+      <input id="nazwisko" name="nazwisko" type="text"
+             [(ngModel)]="nazwisko"
+             [class.poprawne]="poprawneNazwisko()"
+             [class.blad]="!poprawneNazwisko()">
+      @if (!poprawneNazwisko()) {
+        <small>Nazwisko musi mieć co najmniej 2 znaki.</small>
+      }
+    </div>
 
-<input type="number" name="imie" [(ngModel)]="zmienna1">
+    <div class="pole">
+      <label for="ulica">Ulica</label>
+      <input id="ulica" name="ulica" type="text"
+             [(ngModel)]="ulica"
+             [class.poprawne]="poprawnaUlica()"
+             [class.blad]="!poprawnaUlica()">
+      @if (!poprawnaUlica()) {
+        <small>Ulica musi mieć co najmniej 3 znaki.</small>
+      }
+    </div>
 
+    <div class="pole">
+      <label for="numerDomu">Numer domu</label>
+      <input id="numerDomu" name="numerDomu" type="text"
+             [(ngModel)]="numerDomu"
+             [class.poprawne]="poprawnyNumerDomu()"
+             [class.blad]="!poprawnyNumerDomu()">
+      @if (!poprawnyNumerDomu()) {
+        <small>Podaj numer domu.</small>
+      }
+    </div>
 
+    <div class="pole">
+      <label for="kodPocztowy">Kod pocztowy</label>
+      <input id="kodPocztowy" name="kodPocztowy" type="text"
+             placeholder="00-000"
+             [(ngModel)]="kodPocztowy"
+             [class.poprawne]="poprawnyKodPocztowy()"
+             [class.blad]="!poprawnyKodPocztowy()">
+      @if (!poprawnyKodPocztowy()) {
+        <small>Kod pocztowy musi mieć format 00-000.</small>
+      }
+    </div>
 
+    <div class="pole">
+      <label for="miejscowosc">Miejscowość</label>
+      <input id="miejscowosc" name="miejscowosc" type="text"
+             [(ngModel)]="miejscowosc"
+             [class.poprawne]="poprawnaMiejscowosc()"
+             [class.blad]="!poprawnaMiejscowosc()">
+      @if (!poprawnaMiejscowosc()) {
+        <small>Miejscowość musi mieć co najmniej 2 znaki.</small>
+      }
+    </div>
 
-</form>
+    <div class="pole">
+      <label for="wiek">Wiek</label>
+      <input id="wiek" name="wiek" type="number"
+             [(ngModel)]="wiek"
+             [class.poprawne]="poprawnyWiek()"
+             [class.blad]="!poprawnyWiek()">
+      @if (!poprawnyWiek()) {
+        <small>Podaj liczbę całkowitą od 16 do 30.</small>
+      }
+    </div>
 
-<p>To jest zmienna {{zmienna1}}</p>
+    <div class="pole">
+      <label class="etykieta-checkbox">
+        <input name="regulamin" type="checkbox" [(ngModel)]="regulamin">
+        Akceptuję regulamin
+      </label>
+      @if (!regulamin) {
+        <small>Zaakceptuj regulamin, aby się zarejestrować.</small>
+      }
+    </div>
 
-<p>Zmienna logiczna: {{logiczna}}</p>
+    <div class="panel"
+         [style.background-color]="czyFormularzPoprawny() ? '#e3f5e6' : '#ffe5e5'">
+      <p [style.color]="czyFormularzPoprawny() ? 'green' : 'darkred'">
+        @if (czyFormularzPoprawny()) {
+          Formularz jest poprawny. Możesz się zarejestrować.
+        } @else {
+          Popraw dane w formularzu i zaakceptuj regulamin.
+        }
+      </p>
+    </div>
 
-<p>Zmienna tablicowa {{tablica[1]}}</p>
+    <button type="submit" [disabled]="!czyFormularzPoprawny()">
+      Zarejestruj
+    </button>
+  </form>
 
-<p>To jest imie i nazwisko {{uczniowie[1].imie}} oraz {{uczniowie[1].nazwisko}}</p>
-
+  @if (komunikatSukcesu !== '') {
+    <p class="sukces">{{ komunikatSukcesu }}</p>
+  }
+</main>

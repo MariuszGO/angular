@@ -1,0 +1,82 @@
+<mat-toolbar class="naglowek">
+  <mat-icon>menu_book</mat-icon>
+  <span>Moja Biblioteka</span>
+  <span class="odstep"></span>
+  <span class="licznik">Książek: {{ ksiazki.length }}</span>
+</mat-toolbar>
+
+<main class="kontener">
+  <h1>Katalog książek</h1>
+  <p>Wyszukuj książki, filtruj je i dodawaj nowe pozycje.</p>
+
+  <section class="filtry">
+    <mat-form-field appearance="outline">
+      <mat-label>Szukaj tytułu lub autora</mat-label>
+      <input matInput [(ngModel)]="szukaj" name="szukaj">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Kategoria</mat-label>
+      <mat-select [(ngModel)]="filtrKategorii" name="filtr">
+        <mat-option value="Wszystkie">Wszystkie</mat-option>
+        @for (kat of kategorie; track kat) {
+          <mat-option [value]="kat">{{ kat }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </section>
+
+  <section class="siatka">
+    @for (ksiazka of widoczneKsiazki; track ksiazka.id) {
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-icon mat-card-avatar>auto_stories</mat-icon>
+          <mat-card-title>{{ ksiazka.tytul }}</mat-card-title>
+          <mat-card-subtitle>{{ ksiazka.autor }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Kategoria: {{ ksiazka.kategoria }}</p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-button (click)="usunKsiazke(ksiazka.id)">
+            <mat-icon>delete</mat-icon> Usuń
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    } @empty {
+      <p class="pusto">Nie znaleziono książek.</p>
+    }
+  </section>
+
+  <mat-card class="formularz">
+    <mat-card-header>
+      <mat-card-title>Dodaj nową książkę</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="dodajKsiazke()" class="pola">
+        <mat-form-field appearance="outline">
+          <mat-label>Tytuł</mat-label>
+          <input matInput name="tytul" [(ngModel)]="nowyTytul"
+                 required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Autor</mat-label>
+          <input matInput name="autor" [(ngModel)]="nowyAutor"
+                 required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Kategoria</mat-label>
+          <mat-select name="kategoria" [(ngModel)]="nowaKategoria">
+            @for (kat of kategorie; track kat) {
+              <mat-option [value]="kat">{{ kat }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <button mat-flat-button type="submit">
+          <mat-icon>add</mat-icon> Dodaj książkę
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</main>

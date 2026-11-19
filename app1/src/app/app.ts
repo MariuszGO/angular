@@ -1,73 +1,83 @@
-import { Component, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [FormsModule],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
-})
-export class App {
-  protected readonly title = signal('app1');
-  zmienna1: number = 100;
-  zmienna1a = 111;
-  
-  zmienna2: string = "Adam";
-  zmienna2a = "Paweł";
-
-  logiczna: boolean = true;
-  tablica: number[] = [12,23,243];
-
-  uczniowie: {imie: string, nazwisko: string} [] = [{imie: "Jan", nazwisko: "Kowal"} ,
-    {imie: "Paweł", nazwisko: "Kaczor"},
-    {imie: "Adam", nazwisko:"Nowak"}
-  ] 
-
-
-
-}
-
-
-
-/*
-// Importujemy potrzebne elementy Angulara.
-// Component pozwala utworzyć komponent,
-// a FormsModule pozwala korzystać z ngModel w formularzu.
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-// @Component to konfiguracja naszego komponentu.
 @Component({
-
-  // Nazwa znacznika HTML tego komponentu.
   selector: 'app-root',
-
-  // Informacja, że komponent działa samodzielnie.
   standalone: true,
-
-  // Dodajemy FormsModule, ponieważ będziemy używać ngModel.
   imports: [FormsModule],
-
-  // Plik HTML, który będzie wyświetlany przez ten komponent.
   templateUrl: './app.html',
-
-  // Plik CSS odpowiedzialny za wygląd strony.
   styleUrl: './app.css'
 })
-
-// Tworzymy klasę App.
-// Klasa przechowuje dane i logikę naszego komponentu.
 export class App {
+  imie: string = '';
+  nazwisko: string = '';
+  ulica: string = '';
+  numerDomu: string = '';
+  kodPocztowy: string = '';
+  miejscowosc: string = '';
+  wiek: number | null = null;
+  regulamin: boolean = false;
 
-  // Tworzymy zmienną o nazwie zmienna1.
-  // Początkowa wartość tej zmiennej to 10.
-  zmienna1 = 10;
+  komunikatSukcesu: string = '';
 
-  // Tworzymy drugą zmienną.
-  // Jej początkowa wartość to 20.
-  zmienna2 = 20;
+  poprawneImie(): boolean {
+    return this.imie.trim().length >= 3;
+  }
 
+  poprawneNazwisko(): boolean {
+    return this.nazwisko.trim().length >= 2;
+  }
+
+  poprawnaUlica(): boolean {
+    return this.ulica.trim().length >= 3;
+  }
+
+  poprawnyNumerDomu(): boolean {
+    return this.numerDomu.trim().length > 0;
+  }
+
+  poprawnyKodPocztowy(): boolean {
+    return /^\d{2}-\d{3}$/.test(this.kodPocztowy.trim());
+  }
+
+  poprawnaMiejscowosc(): boolean {
+    return this.miejscowosc.trim().length >= 2;
+  }
+
+  poprawnyWiek(): boolean {
+    return this.wiek !== null &&
+           Number.isInteger(this.wiek) &&
+           this.wiek >= 16 &&
+           this.wiek <= 30;
+  }
+
+  czyFormularzPoprawny(): boolean {
+    return this.poprawneImie() &&
+           this.poprawneNazwisko() &&
+           this.poprawnaUlica() &&
+           this.poprawnyNumerDomu() &&
+           this.poprawnyKodPocztowy() &&
+           this.poprawnaMiejscowosc() &&
+           this.poprawnyWiek() &&
+           this.regulamin;
+  }
+
+  zarejestruj(): void {
+    // Kontrola również po stronie kodu, a nie tylko w przycisku.
+    if (!this.czyFormularzPoprawny()) {
+      return;
+    }
+
+    this.komunikatSukcesu =
+      `Zarejestrowano: ${this.imie.trim()} ${this.nazwisko.trim()}`;
+
+    this.imie = '';
+    this.nazwisko = '';
+    this.ulica = '';
+    this.numerDomu = '';
+    this.kodPocztowy = '';
+    this.miejscowosc = '';
+    this.wiek = null;
+    this.regulamin = false;
+  }
 }
-
-*/
